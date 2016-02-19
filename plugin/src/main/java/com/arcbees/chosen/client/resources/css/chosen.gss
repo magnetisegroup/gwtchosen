@@ -9,8 +9,10 @@
     display: inline-block;
     zoom: 1;
 
+    width: 100% !important;
     position: relative;
 }
+
 
 .chzn-container .chzn-drop {
     background: CHZN_C_PRIMARY;
@@ -18,9 +20,11 @@
     border: 1px solid CHZN_C_BORDER;
     border-top: 0;
 
-    position: absolute;
+    position: fixed;
     top: 29px;
     left: 0;
+
+    width: 30% !important;
     z-index: 1010;
 
     @mixin shadow(0, 4px, 5px, 0.15);

@@ -16,11 +16,6 @@
 
 package com.arcbees.chosen.client;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import com.arcbees.chosen.client.SelectParser.GroupItem;
 import com.arcbees.chosen.client.SelectParser.OptionItem;
 import com.arcbees.chosen.client.SelectParser.SelectItem;
@@ -56,6 +51,11 @@ import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import static com.google.gwt.query.client.GQuery.$;
 import static com.google.gwt.query.client.GQuery.document;
@@ -321,7 +321,7 @@ public abstract class ChosenImpl {
                 break;
         }
 
-        return ddTop;
+        return container.offset().top + ddTop;
     }
 
     protected void choiceDestroy(GQuery link) {
@@ -744,7 +744,9 @@ public abstract class ChosenImpl {
             container.addClass(css.resultAbove());
         }
 
-        dropdown.css("top", ddTop + "px").css(isRTL ? "right" : "left", "0");
+        int ddHori = isRTL? 0 :container.offset().left;
+
+        dropdown.css("top", ddTop + "px").css(isRTL ? "right" : "left", Integer.toString(ddHori));
     }
 
     void resultActivate(GQuery query) {
